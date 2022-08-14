@@ -1,0 +1,65 @@
+body{
+    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.elbody
+    {
+        background: #0F2027;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+    }
+
+
+
+.datos {
+    background-color: #373B3F;
+    z-index: 5;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.container-carga-ingreso {
+    border-radius: 10px;
+    background-color: #202428;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.container-body-ingreso {
+    padding: 1em;
+}
+
+.form-carga-ingreso {
+    background-color: #373B3F;
+    padding: 0.5em;
+    border-radius: 10px;
+}
+
+/* .tabla-barcaza {
+    visibility: hidden;
+} */
+
+
+.tabla {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#descripcion{
+    resize:none;
+}
+
+#input-form-file{
+    font-size: .75em;
+}
+
+#tabla-full {
+    display: flex;
+    text-align: center;
+    margin: auto;
+    align-items: center;
+}
