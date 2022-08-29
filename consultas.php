@@ -32,22 +32,6 @@ if($_POST){
     
 
     switch ($action){
-        case"Cargar":
-            $matricula=$_POST["matricula"];
-            $objConexion = new conexion();
-            $esta=$objConexion->consultar("SELECT * FROM `barcaza` WHERE `matricula` LIKE '$matricula'");
-            print_r($esta);
-            if ($esta) {
-                print_r($esta);
-                // do user authentication as per your requirements
-                // ...
-                // ...
-                // based on successful authentication
-            } else {
-                print_r ("Malisimo");
-            } 
-            break;
-
 
         case"cargar-mat":
             $matricula= $_POST["matricula"];
@@ -70,7 +54,7 @@ if($_POST){
             $objConexion = new conexion();
         
             
-            $sql_insert="INSERT INTO `barcaza` (`matricula`, `vig_matricula`, `aseguradora`, `vig_seguro`, `tipo`, `color`, `capacidad`, `marca`, `motor`, `nombre`, `adicional`,`dentro`) VALUES ('$matricula', '$vig_matricula', '$datos_seguro', '$vig_seguro', '$tipo', '$color','$capacidad', '$marca', '$motor', '$nombre', '$adicional','1')";
+            $sql_insert="INSERT INTO `barcaza` (`matricula`, `vig_matricula`, `aseguradora`, `vig_seguro`, `tipo`, `color`, `capacidad`, `marca`, `motor`, `nombre`, `adicional`) VALUES ('$matricula', '$vig_matricula', '$datos_seguro', '$vig_seguro', '$tipo', '$color','$capacidad', '$marca', '$motor', '$nombre', '$adicional')";
             $objConexion->ejecutar($sql_insert);
             header("location:portafolio.php"); //recarga la página una vez que se inserta o borra algún dato
             break;
@@ -90,6 +74,7 @@ if($_POST){
                 header("location:portafolio.php");
 
                 break;
+            
             case"buscar-mat":
                 $matricula_p=$_POST["matricula"];
                 
@@ -152,6 +137,8 @@ if($_POST){
                 if($boolean_mat && $boolean_dni) {
 
                 $vehiculo= $_POST["vehiculo"];
+                $patente= $_POST["patente"];
+                $color= $_POST["color"];
                 $fecha=date("Y-m-d");
                 $hora=date("H:i:s");
 
@@ -159,11 +146,19 @@ if($_POST){
 
 
                 
-                $sql_insert = "INSERT INTO `ingreso` (`matricula`, `dni`, `vehiculo`, `fecha`, `hora`,`estado`) VALUES ('$matricula', '$dni', '$vehiculo', '$fecha', '$hora', 'dentro')";
+                $sql_insert = "INSERT INTO `ingreso` (`matricula`, `dni`, `vehiculo`, `fecha`, `hora`,`estado`,`patente`,`color_v`) VALUES ('$matricula', '$dni', '$vehiculo', '$fecha', '$hora', 'dentro','$patente','$color')";
 
                 $objConexion->ejecutar($sql_insert);
 
-                ?><script>prompt("Ingreso realizado");</script><?php
+                ?>
+                <script>alert("Ingreso realizado");</script><?php
+                
+
+                
+
+          
+                
+
              
                 } else {
                     if ($boolean_mat){
@@ -206,6 +201,24 @@ if($_POST){
 
                 
                 break;
+            
+            case"edit_ingreso":
+                $id=$_POST["id"];
+                $matricula=$_POST["matricula"];
+                $dni=$_POST["dni"];
+                $vehiculo=$_POST["vehiculo"];
+                $patente=$_POST["patente"];
+                $color=$_POST["color"];
+
+                $objConexion= new conexion;
+                $sql_insert = "UPDATE ingreso SET matricula='$matricula',dni='$dni',vehiculo='$vehiculo',patente='$patente',color_v='$color' WHERE ingreso.id='$id';";
+
+                $objConexion->ejecutar($sql_insert);
+
+                header("location:index.php");
+                
+
+
 
 
             
